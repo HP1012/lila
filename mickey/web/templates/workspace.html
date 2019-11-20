@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Workspace{% endblock %}
+
+{% block breadcrumb %}Workspace{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        $('.selectpicker').selectpicker();
+    });
+</script>
+<script type="text/javascript" src="js/lila.workspace.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="row workspace">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="btn-group card-subtitle">
+                    <button type="button" class="btn btn-xs btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ti-settings"></i> <span class="lang">Workspace manager</span>
+                    </button>
+                    <div class="dropdown-menu animated flipInY">
+                        <a id="btn-new-wsp" class="dropdown-item lang" href="#">New workspace</a>
+                        <a id="btn-delete-wsp" class="dropdown-item lang" href="#">Delete workspace</a>
+                        <a id="btn-edit-wsp" class="dropdown-item lang" href="#">Edit workspace</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <select id="workspace" data-live-search="true" class="selectpicker m-b-20 m-r-10" data-style="btn-info btn-outline-info">
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <select id="function" data-live-search="true" class="selectpicker" data-style="btn-info btn-outline-info">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="btn-check" type="button" class="btn waves-effect waves-light btn-block btn-info lang">Check</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="btn-report" type="button" class="btn waves-effect waves-light btn-block btn-primary lang">Report</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="card-title lang">Coverage Report</h5>
+                        <table id="coverage-report" class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="lang">Function</td>
+                                    <td data-name="func"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Source</td>
+                                    <td data-name="src_short"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">C0</td>
+                                    <td data-name="c0"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">C1</td>
+                                    <td data-name="c1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">MC/DC</td>
+                                    <td data-name="mcdc"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Time</td>
+                                    <td data-name="test_time"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="card-title lang">Function Info</h5>
+                        <table id="function-info" class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="lang">No.</td>
+                                    <td data-name="func_no"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Package</td>
+                                    <td data-name="package"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Vol</td>
+                                    <td data-name="vol"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Phase</td>
+                                    <td data-name="phase"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">PIC</td>
+                                    <td data-name="pic"></td>
+                                </tr>
+                                <tr>
+                                    <td class="lang">Jira</td>
+                                    <td data-name="jira"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs customtab" role="tablist">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#checklist" role="tab"><span><i class="mdi mdi-checkbox-marked-outline"></i></span> <span class="hidden-xs-down lang">Checklist</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#warning" role="tab"><span><i class="mdi mdi-alert-outline"></i></span> <span class="hidden-xs-down lang">Warning</span></a> </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="checklist" role="tabpanel">
+                    <div class="table-responsive table-hover color-table info-table">
+                        <table id="checklist-tbl" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="lang">Filename</th>
+                                    <th class="lang">Item</th>
+                                    <th class="lang">Status</th>
+                                    <th class="lang">Explanation</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="warning" role="tabpanel">
+                    <div class="table-responsive table-hover color-table primary-table">
+                        <table id="warning-tbl" class="table">
+                            <thead>
+                                <tr>
+                                    <th class="lang">Filename</th>
+                                    <th class="lang">Item</th>
+                                    <th class="lang">Status</th>
+                                    <th class="lang">Explanation</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "modal.workspace.html" %}
+
+{% include "modal.report.html" %}
+
+{% include "modal.report.status.html" %}
+
+{% include "modal.auth.html" %}
+
+{% endblock %}

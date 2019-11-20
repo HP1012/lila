@@ -1,0 +1,7 @@
+*.pyc
+.vscode
+
+mickey/web/*.html
+mickey/test*.py
+build/
+dist/

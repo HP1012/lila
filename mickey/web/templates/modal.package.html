@@ -1,0 +1,71 @@
+<div id="modal-p2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title lang">Package manager</h4>
+            </div>
+            <div class="modal-body">
+                <div id="p2-warning">
+                    <div class="alert alert-danger">Please make sure all required fields are filled out correctly</div>
+                </div>
+                <form id='p2-form' class="form-material">
+                    <!-- Jira info -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input class="form-control" id="p2-name"><span class="help-block text-muted"><small class="lang">Package name</small></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input class="form-control" id="p2-jira"><span class="help-block text-muted"><small class="lang">Jira</small></span>
+                        </div>
+                    </div>
+
+                    <!-- Summary file  -->
+                    <div class="form-group">
+                        <input class="form-control" id="p2-summary"><span class="help-block text-muted"><small class="lang">Summary URL</small></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input class="form-control" id="p2-summary-sheet"><span class="help-block text-muted"><small class="lang">Summary Sheetname</small></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" id="p2-summary-begin" value="2" min="1"><span class="help-block text-muted"><small class="lang">Summary Begin Row</small></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" id="p2-summary-end" value="2" min="2"><span class="help-block text-muted"><small class="lang">Summary End Row</small></span>
+                        </div>
+                    </div>
+
+                    <!-- Report file -->
+                    <div class="form-group">
+                        <input class="form-control" id="p2-report"><span class="help-block text-muted"><small class="lang">Report URL</small></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input class="form-control" id="p2-report-sheet"><span class="help-block text-muted"><small class="lang">Report Sheetname</small></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" id="p2-report-begin" value="2" min="1"><span class="help-block text-muted"><small class="lang">Report Begin Row</small></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="number" class="form-control" id="p2-report-end" value="2" min="2"><span class="help-block text-muted"><small class="lang">Report End Row</small></span>
+                        </div>
+                    </div>
+
+                    <!-- Source directory -->
+                    <div class="form-group">
+                        <input class="form-control" id="p2-source"><span class="help-block text-muted"><small class="lang">Source Directory</small></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="p2-btn-save" type="button" class="btn btn-primary lang">Save</button>
+                <button type="button" class="btn btn-secondary lang" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal -->

@@ -1,0 +1,271 @@
+{
+    "ui": {
+        "flagIconA": "jp",
+        "flagIconB": "us",
+        "flagName": "English"
+    },
+    "checklist": {
+        "testlog": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "13_parse",
+                "テストログの解析"
+            ],
+            [
+                "14_func",
+                "テストログに全て関数"
+            ]
+        ],
+        "csv": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "2_desc",
+                "関数の説明"
+            ],
+            [
+                "3_init_opt",
+                "各関数呼び出し初期"
+            ],
+            [
+                "4_init_var",
+                "初期変数"
+            ]
+        ],
+        "ini": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "xeat": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "xtct": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "ie": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "5_input_var",
+                "入力変数"
+            ],
+            [
+                "6_label",
+                "ラベル"
+            ]
+        ],
+        "io": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "16_io_var",
+                "I/O変数"
+            ]
+        ],
+        "oe": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "tc": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "info": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "table": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "7_title",
+                "タイトル"
+            ],
+            [
+                "8_index",
+                "インデックス"
+            ],
+            [
+                "9_confirm",
+                "確認"
+            ],
+            [
+                "10_header",
+                "ヘッダ"
+            ],
+            [
+                "11_analysis",
+                "テスト分析項目チェック"
+            ],
+            [
+                "15_io_var",
+                "入力変数/出力変数"
+            ]
+        ],
+        "report_html": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "12_entire",
+                "テスト全体の情報"
+            ]
+        ],
+        "report_csv": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "stub": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ]
+        ],
+        "xlsx": [
+            [
+                "1_exist",
+                "ファイル既存"
+            ],
+            [
+                "17_sheet_io",
+                "入出力データ分析表"
+            ],
+            [
+                "18_sheet_table",
+                "テストケース表"
+            ],
+            [
+                "19_sheet_oe",
+                "出力データ分析表"
+            ],
+            [
+                "20_sheet_ie",
+                "入力データ分析表"
+            ],
+            [
+                "21_sheet_testlog",
+                "テストカバレッジレポート"
+            ],
+            [
+                "22_result_summary",
+                "テーブル1.1と概要ファイル"
+            ],
+            [
+                "23_result_testlog",
+                "テーブル1.1とテストログ"
+            ]
+        ]
+    },
+    "tooltip": {
+        "1_exist": "必要なファイルが既存する必要がある",
+        "2_desc": "テスト関数を含める「.c」ファイルに「Simulink model」の言葉がある場合、関数の説明は「Simulink model」'である<br>。逆に関数の説明は関数名である",
+        "3_init_opt": "各関数呼び出し初期",
+        "4_init_var": "全体の出力変数を初期設定する必要がある。<br>入力変数を初期設定せず",
+        "5_input_var": "「_IE.html」の入力変数が「.csv」と一致する必要がある",
+        "6_label": "テスト分析項目のラベルが定義したリストのラベルと一致する必要がある",
+        "7_title": "「_Table.html」ファイルの表題が「.csv」と一致する必要がある",
+        "8_index": "テストケース番号が「1」を始めにテストケース番号が連続する必要がある",
+        "9_confirm": "全てのテストケースを「OK」、または「NG」を入力する必要がある",
+        "10_header": "定義した全てのコラムがテストケース表に含まる必要がある",
+        "11_analysis": "「_Table.html」にテスト分析項目の情報が「_IE.html」と一致する必要がある",
+        "12_entire": "テスト結果報告書.htmlのテスト全体の情報がテストログファイルの情報と一致する必要がある",
+        "13_parse": "テストログファイルが解析できる",
+        "14_func": "WinAMSが生成したテストログにはテスト関数名がない",
+        "15_io_var": "「_Table.html」の入力変数と出力変数が「.csv」と一致する必要がある",
+        "16_io_var": "「_IO.html」の入力変数と出力変数が「_Table.html」と一致する必要がある",
+        "17_sheet_io": "テスト仕様書の入出力データ分析表が「_IO.html」と一致する",
+        "18_sheet_table": "テスト仕様書のテストケース表が「_Table.html」と一致する",
+        "19_sheet_oe": "テスト仕様書の出力データ分析表が「_OE.html」と一致する",
+        "20_sheet_ie": "テスト仕様書の入力データ分析表が「_IE.html」と一致する",
+        "21_sheet_testlog": "テスト仕様書のテストカバレッジレポートが「.txt」と一致する",
+        "22_result_summary": "テスト仕様書のテスト結果が概要ファイルと一致する",
+        "23_result_testlog": "テスト仕様書のテスト結果がテストログと一致する"
+    },
+    "text": {
+        "Workspace": "ワークスペース",
+        "Working": "作業中",
+        "Dashboard": "ダッシュボード",
+        "Summary": "概要",
+        "Check": "チェック",
+        "Report": "レポート",
+        "Save": "保存",
+        "Close": "クローズ",
+        "Delete": "削除",
+        "Continue": "次へ",
+        "Checklist": "チェックリスト",
+        "Warning": "警告",
+        "Filename": "ファイル名",
+        "Item": "項目",
+        "Status": "状況",
+        "Explanation": "説明",
+        "Function": "関数名",
+        "Source": "所属ファイル名",
+        "C0": "C0網羅率",
+        "C1": "C1網羅率",
+        "MC/DC": "MC/DC網羅率",
+        "Time": "カバレッジデータ出力日",
+        "Workspace manager": "ワークスペース管理",
+		"Package": "パッケージ",
+		"Vol": "Vol",
+		"Phase": "フェーズ",
+		"PIC": "PIC",
+		"Package Manager": "パッケージ管理",
+		"New Package": "新規パッケージ",
+		"Settings": "設定",
+		"Name": "名前",
+		"Jira": "Jira",
+		"Actions": "操作",
+		"Summary URL": "概要URL",
+		"Summary Sheetname": "概要シート名",
+		"Summary Begin Row": "概要最初列",
+		"Summary End Row": "概要最後列",
+		"Report URL": "レポートURL",
+		"Report Sheetname": "レポートシート名",
+		"Report Begin Row": "レポート最初列",
+		"Report End Row": "レポート最後列",
+		"Source Directory": "ソースディレクトリー",
+		"Coverage Report": "カバレッジレポート",
+		"Function Info": "関数情報",
+		"New workspace": "新ワークスペース",
+		"Delete workspace": "ワークスペース削除",
+		"Edit workspace": "ワークスペース編集",
+		"TestCoverLog directory": "テストカバーログディレクトリー",
+		"Browse directory": "ブラウザディレクトリー",
+		"Package name": "パッケージ名",
+		"Workspace name": "ワークスペース名",
+		"Deliver result to directory": "ディレクトリーへ結果送信",
+		"Copy test result files to directory": "ディレクトリーへテスト結果ファイルコピー",
+		"Specification directory": "仕様ディレクトリー",
+		"Total findings": "全てのバグ",
+		"Function No.": "関数番号",
+		"Report progress": "レポート進歩状況"
+    }
+}

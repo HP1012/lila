@@ -1,0 +1,116 @@
+{
+    "headerXlsx": {
+        "No.": "func_no",
+        "関数No": "func_no",
+        "Function": "func",
+        "関数名": "func",
+        "File": "src_rel",
+        "対象ファイル": "src_rel",
+        "Group": "group",
+        "Vol": "vol",
+        "Result": "result",
+        "合否": "result",
+        "C0": "c0",
+        "C0\n達成率": "c0",
+        "C1": "c1",
+        "C１\n達成率": "c1",
+        "MC/DC": "mcdc",
+        "MCDC\n達成率": "mcdc",
+        "Release Phase": "phase",
+        "PIC": "pic",
+        "Findings Link": "issue",
+        "Findings Description": "issue",
+        "Total Findings": "issue_num"
+    },
+    "headerTable": {
+        "no": [
+            "No.",
+            "No"
+        ],
+        "confirmation": [
+            "Confirmation",
+            "確認"
+        ],
+        "id": [
+            "ID"
+        ],
+        "item": [
+            "Test Analysis Item",
+            "テスト分析項目"
+        ],
+        "comment": [
+            "Comment",
+            "コメント"
+        ]
+    },
+    "headerHtmlTable": [
+        [
+            "No.",
+            "Test Analysis Item",
+            "Decision",
+            "Attribute",
+            "ID",
+            "Comment",
+            "Input Value",
+            "OutputValue",
+            "Check",
+            "Match",
+            "Confirmation"
+        ],
+        [
+            "No",
+            "テスト分析項目",
+            "判定",
+            "属性",
+            "ID",
+            "コメント",
+            "入力値",
+            "出力値",
+            "合否",
+            "一致",
+            "確認"
+        ]
+    ],
+    "labelList": [
+        [
+            "input_variable_p1",
+            "input_func_return_p2",
+            "condition_p3",
+            "sw_case_p4",
+            "zero_division_p5",
+            "calc_overflow_p6",
+            "sub_underflow_p7",
+            "casting_overflow_p8",
+            "array_p9",
+            "pointer_p10",
+            "loop_p11",
+            "const_check_p12",
+            "split_merge_p13",
+            "other_p14"
+        ],
+        [
+            "入力条件の境界値",
+            "条件判断の閾値",
+            "関数の戻り値"
+        ]
+    ],
+    "jpDict": {
+        "result": "テスト結果: {confirm}\nＣ０網羅率 : {c0}\nＣ１網羅率 : {c1}\nＭＣ／ＤＣ網羅率 : {mcdc}\n問題点 : {issue}",
+        "issue": "問題点管理表の問題点シートの",
+        "noissue": "なし",
+        "testreport": "テスト結果報告書",
+        "dirresult": "単体テスト結果",
+        "dirspec": "単体テスト仕様書",
+        "colon": "：",
+        "testlog_intro": "カバレッジ結果を貼り付けする。"
+    },
+    "specSheets": {
+        "testlog": "カバレッジ結果",
+        "table": "テストケース表",
+        "io": "入出力データ分析表",
+        "oe": "出力データ分析表",
+        "ie": "入力データ分析表",
+        "spec": "単体テスト仕様",
+        "date": "フォーマット変更来歴"
+    }
+}

@@ -1,0 +1,25 @@
+<tbody>
+    {% for row in data %}
+    <tr>
+        <td>{{row[0]}}</td>
+
+        <td><span class="mytooltip">
+            <span class="tooltip-item2">{{row[1]}}</span>
+            <span class="tooltip-content4">{{row[4]}}</span>
+        </span></td>
+
+        <td>
+            {% if row[2] == True %}
+                <span class="label label-success">OK</span>
+            {% elif row[2] == False %}
+                <span class="label label-danger">NG</span>
+            {% elif row[2] == None %}
+                <span class="label label-warning">NC</span>
+            {% else %}
+                {{row[2]}}
+            {% endif %}
+        </td>
+        <td>{{row[3]}}</td>
+    </tr>
+    {% endfor %}
+</tbody>

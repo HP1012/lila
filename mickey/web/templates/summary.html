@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Summary{% endblock %}
+
+{% block breadcrumb %}Summary{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="js/lila.summary.js"></script>
+<script src="js/footable.all.min.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select id="workspace" data-live-search="true" class="selectpicker m-b-20 m-r-10" data-style="btn-info btn-outline-info">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="btn-check" type="button" class="btn waves-effect waves-light btn-block btn-info lang">Check</button>
+                    </div>
+                </div>
+                <div class="progress m-t-10">
+                    <div id="progress-bar" class="progress-bar bg-info active progress-bar-striped" style="width: 0%; height:20px;" role="progressbar">
+                    </div>
+                </div>
+
+                <div id="alert-box">
+                    <div class="alert alert-info">Please select workspace then click <code>Check</code> button to check all testlogs</div>
+                </div>
+
+                <table id="summary-table" class="table m-t-10 toggle-arrow-tiny color-table info-table">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "modal.summary.html" %}
+
+{% endblock %}

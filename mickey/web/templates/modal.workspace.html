@@ -1,0 +1,42 @@
+<div id="modal-a2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title lang">Workspace manager</h4>
+            </div>
+            <div class="modal-body">
+                <div id="a2-warning">
+                    <div class="alert alert-danger">Please make sure all required fields are filled out correctly</div>
+                </div>
+                <form id='a2-form' class="form-material">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="a2-name" class="control-label"><span class="help-block text-muted"><small class="lang">Workspace name</small></span></label>
+                            <input class="form-control" id="a2-name">
+                        </div>
+                        <div id="a2-package-block" class="col-md-6">
+                            <label for="a2-package" class="control-label"><span class="help-block text-muted"><small class="lang">Package name</small></span></label>
+                            <select id="a2-package" data-live-search="true" class="selectpicker m-b-20 m-r-10" data-style="btn-info btn-outline-info">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="a2-path" class="control-label"><span class="help-block text-muted"><small><span class="lang">TestCoverLog directory</span> &nbsp;<button id="a2-btn-path" type="button" class="btn waves-effect waves-light btn-xs btn-info lang">Browse directory</button></small></span></label><br>
+                        <a id="a2-path" href="#"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="a2-deliver" class="control-label"><span class="help-block text-muted"><small><span class="lang">Deliver result to directory</span> &nbsp;<button id="a2-btn-deliver" type="button" class="btn waves-effect waves-light btn-xs btn-info lang">Browse directory</button></small></span></label><br>
+                        <a id="a2-deliver" href="#"></a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="a2-btn-save" type="button" class="btn btn-primary lang">Save</button>
+                <button id="a2-btn-delete" type="button" class="btn btn-danger lang">Delete</button>
+                <button type="button" class="btn btn-secondary lang" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal -->

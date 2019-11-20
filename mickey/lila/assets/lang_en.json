@@ -1,0 +1,212 @@
+{
+    "ui": {
+        "flagIconA": "us",
+        "flagIconB": "jp",
+        "flagName": "Japan"
+    },
+    "checklist": {
+        "testlog": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "13_parse",
+                "Parse testlog"
+            ],
+            [
+                "14_func",
+                "Full function in testlog"
+            ]
+        ],
+        "csv": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "2_desc",
+                "Function description"
+            ],
+            [
+                "3_init_opt",
+                "InitWheneverCall"
+            ],
+            [
+                "4_init_var",
+                "Initial variables"
+            ]
+        ],
+        "ini": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "xeat": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "xtct": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "ie": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "5_input_var",
+                "Input variables"
+            ],
+            [
+                "6_label",
+                "Label"
+            ]
+        ],
+        "io": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "16_io_var",
+                "I/O variables"
+            ]
+        ],
+        "oe": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "tc": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "info": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "table": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "7_title",
+                "Title"
+            ],
+            [
+                "8_index",
+                "Index"
+            ],
+            [
+                "9_confirm",
+                "Confirmation"
+            ],
+            [
+                "10_header",
+                "Header"
+            ],
+            [
+                "11_analysis",
+                "Check Test Analysis Item"
+            ],
+            [
+                "15_io_var",
+                "Input/Output variables"
+            ]
+        ],
+        "report_html": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "12_entire",
+                "Entire Information"
+            ]
+        ],
+        "report_csv": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "stub": [
+            [
+                "1_exist",
+                "File exists"
+            ]
+        ],
+        "xlsx": [
+            [
+                "1_exist",
+                "File exists"
+            ],
+            [
+                "17_sheet_io",
+                "I/O Data Analysis Table"
+            ],
+            [
+                "18_sheet_table",
+                "Test Case Table"
+            ],
+            [
+                "19_sheet_oe",
+                "Output Data Analysis Table"
+            ],
+            [
+                "20_sheet_ie",
+                "Input Data Analysis Table"
+            ],
+            [
+                "21_sheet_testlog",
+                "Test coverage report"
+            ],
+            [
+                "22_result_summary",
+                "Table 1.1 vs summary"
+            ],
+            [
+                "23_result_testlog",
+                "Table 1.1 vs testlog"
+            ]
+        ]
+    },
+    "tooltip": {
+        "1_exist": "The required file should be existed",
+        "2_desc": "The description of function is 'Simulink model' if the function in simulink module<br> Otherwise the description is function name",
+        "3_init_opt": "Init whenerver call (not first call)",
+        "4_init_var": "All output variables should be initialized.<br>Do not initial input variables",
+        "5_input_var": "Input variables on _IE.html should consistent with .csv",
+        "6_label": "Label of test analysis item should be in pre-defined list of label",
+        "7_title": "The title of table in file _Table.html should be consistent with .csv",
+        "8_index": "The testcase No. should be started at 1.<br>The testcase no should continuous - no hopping",
+        "9_confirm": "The confirmation should be filled for all testcase",
+        "10_header": "The testcase table should has all pre-defined columns",
+        "11_analysis": "The info of test analysis item in _Table.html should be consistent with _IE.html",
+        "12_entire": "The info in Entire Information table should be consistent with testlog info",
+        "13_parse": "Able to parse testlog to get info or not",
+        "14_func": "Sometime winAMS generate testlog without testing function name",
+        "15_io_var": "Input/Output variable in _Table.html should be consistent with .csv",
+        "16_io_var": "Input/Output variable in _IO.html should be consistent with _Table.html",
+        "17_sheet_io": "I/O Data Analysis Table in test spec should be consitent with _IO.html",
+        "18_sheet_table": "Test Case Table in test spec should be consitent with _Table.html",
+        "19_sheet_oe": "Output Data Analysis Table in test spec should be consitent with _OE.html",
+        "20_sheet_ie": "Input Data Analysis Table in test spec should be consitent with _IE.html",
+        "21_sheet_testlog": "Test coverage report in test spec should be consistent with .txt",
+        "22_result_summary": "Test result in test spec should be consistent with summary",
+        "23_result_testlog": "Test result in test spec should be consistent with testlog"
+    }
+}

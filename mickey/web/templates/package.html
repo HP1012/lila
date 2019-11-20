@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Package Manager{% endblock %}
+
+{% block breadcrumb %}Package Manager{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="js/lila.package.js"></script>
+<script src="js/footable.all.min.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="m-t-10">
+                    <div class="d-flex">
+                        <div class="mr-auto">
+                            <div class="form-group">
+                                <button id="btn-new-package" class="btn btn-primary btn-sm lang">New Package
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="package-table" class="table m-b-0 toggle-arrow-tiny color-table info-table">
+                    <thead>
+                        <tr>
+                            <th data-toggle="true" class="lang"> Name </th>
+                            <th class="lang"> Jira </th>
+                            <th class="lang"> Actions </th>
+                            <th data-hide="all" class="lang"> Summary </th>
+                            <th data-hide="all" class="lang"> Summary Sheetname </th>
+                            <th data-hide="all" class="lang"> Summary Begin Row </th>
+                            <th data-hide="all" class="lang"> Summary End Row </th>
+                            <th data-hide="all" class="lang"> Report </th>
+                            <th data-hide="all" class="lang"> Report Sheetname </th>
+                            <th data-hide="all" class="lang"> Report Begin Row </th>
+                            <th data-hide="all" class="lang"> Report End Row </th>
+                            <th data-hide="all" class="lang"> Source </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "modal.package.html" %}
+
+{% endblock %}

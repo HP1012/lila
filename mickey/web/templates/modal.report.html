@@ -1,0 +1,41 @@
+<div id="modal-a4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title lang">Report</h4>
+            </div>
+            <div class="modal-body">
+                <form id='a4-form' class="form-material">
+                    <div class="form-group">
+                        <label for="a4-target" class="control-label"><span class="help-block text-muted"><small><span class="lang">Copy test result files to directory</span>&nbsp;<button id="a4-btn-target" type="button" class="btn waves-effect waves-light btn-xs btn-info lang">Browse directory</button></small></span></label><br>
+                        <a href="#" id="a4-target"></a>
+                    </div>
+                    <div class="form-group">
+                        <label for="a4-spec" class="control-label"><span class="help-block text-muted"><small><span class="lang">Specification directory</span>&nbsp;<button id="a4-btn-spec" type="button" class="btn waves-effect waves-light btn-xs btn-info lang">Browse directory</button></small></span></label><br>
+                        <a href="#" id="a4-spec"></a>
+                    </div>
+                    <div class="form-group" hidden>
+                        <label for="a4-template" class="control-label"><span class="help-block text-muted"><small class="lang">Unit test specification template</small></span></label>
+                        <input class="form-control" id="a4-template">
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="a4-issue" class="control-label"><span class="help-block text-muted"><small class="lang">Total findings</small></span></label>
+                            <input type="number" class="form-control" id="a4-issue" value="0" min="0">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="a4-func-no" class="control-label"><span class="help-block text-muted"><small class="lang">Function No.</small></span></label>
+                            <input type="number" class="form-control" id="a4-func-no" value="0">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="a4-btn-continue" type="button" class="btn btn-info lang">Continue</button>
+                <button type="button" class="btn btn-secondary lang" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal -->
