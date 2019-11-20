@@ -43,7 +43,7 @@ os.kill(pid, signal.SIGTERM) #or signal.SIGKILL
 # Remove all pip
 
 ```
-pip freeze > requirements.txt
-pip uninstall -y -r requirements.txt
+pip freeze > requirements_temp.txt
+pip uninstall -y -r requirements_temp.txt
 ```# lila # lila # lila
 # lila
