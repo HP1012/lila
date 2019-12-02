@@ -304,7 +304,8 @@ var ReportModal = {
         template: $("#a4-template"),
         issue: $("#a4-issue"),
         funcNo: $("#a4-func-no"),
-        btnContinue: $("#a4-btn-continue"),
+        btnUpdate: $("#a4-btn-update"),
+        btnCreateNew: $("#a4-btn-create-new"),
         btnTarget: $("#a4-btn-target"),
         btnSpec: $("#a4-btn-spec")
     },
@@ -327,7 +328,7 @@ var ReportModal = {
             await Utils.selectFile(a4.template);
         });
 
-        a4.btnContinue.on("click", async function() {
+        a4.btnCreateNew.on("click", async function() {
             var package = a1.workspace.find("option:selected").attr("package");
             var info = {
                 testlog: a1.function.find("option:selected").attr("path"),
@@ -349,6 +350,30 @@ var ReportModal = {
             a5.progressBar.removeClass("active progress-bar-striped");
             a5.btnClose.show();
         });
+
+        a4.btnUpdate.on("click", async function() {
+            var package = a1.workspace.find("option:selected").attr("package");
+            var info = {
+                testlog: a1.function.find("option:selected").attr("path"),
+                target: a4.target.text(),
+                spec: a4.spec.text(),
+                template: a4.template.val(),
+                issue: a4.issue.val(),
+                func_no: a4.funcNo.val(),
+                package: package
+            };
+
+            a4.modal.modal("toggle");
+
+            a5.progressBar.addClass("active progress-bar-striped");
+            ReportProgressModal.invoke();
+            a5.btnClose.hide();
+
+            await eel.deliver_report_update(info)();
+            a5.progressBar.removeClass("active progress-bar-striped");
+            a5.btnClose.show();
+        });
+
     },
 
     invoke: async function() {

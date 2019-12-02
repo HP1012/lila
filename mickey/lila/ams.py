@@ -1506,7 +1506,7 @@ class Report(Base):
 
             progress += 1
 
-    def generate_spec(self, options):
+    def generate_spec(self, options, update_spec = False):
         '''Generate test spec'''
         logger.debug("Generate test spec")
         try:
@@ -1517,14 +1517,31 @@ class Report(Base):
             template = Path(options.get('template'))
             if template is None or Path(template).is_file() is False:
                 template = CONST.SPEC
-            wlogger("Generating test spec {0}", filename, 15)
-            utils.copy(template, filespec)
+            wlogger("Generating test spec {0}", filename, 0)
+            if update_spec == False:
+                utils.copy(template, filespec)
 
-            # Copy .html file to excel
+            # open file excel
             spec_sheets = utils.load(CONST.SETTING, 'specSheets')
             excel = ExcelWin32(filespec)
             vba_err = "Error VBA {0}"
+            
+            wlogger("Clear to update !",15)
+            if update_spec == True:
+                sheet = spec_sheets['ie']
+                #clear to update
+                cmd = 'Clear_Sheet_html'
+                paras = [filename]
+                rst = excel.run(sheet, cmd, paras)
+                wlogger(vba_err, rst) if rst != 'vba_ok' else None    
+                cmd = 'Clear_SHEET_NAME_RESULT_Table_1_4'
+                rst = excel.run(sheet, cmd, paras)
+                wlogger(vba_err, rst) if rst != 'vba_ok' else None  
+                cmd = 'Clear_SHEET_NAME_RESULT_Table_1_3'
+                rst = excel.run(sheet, cmd, paras)
+                wlogger(vba_err, rst) if rst != 'vba_ok' else None  
 
+            # Copy .html file to excel
             progress = 20
             for key in ['testlog', 'table', 'io', 'oe', 'ie']:
                 try:
@@ -1578,7 +1595,7 @@ class Report(Base):
                 if self.csv.stub_info.get('stub') != []:
                     wlogger("Table {0}: Updating", '1.5', 65)
                     filepath = self.files.get('stub')
-                    paras = [filename, sheet, 'B54', str(filepath)]
+                    paras = [filename, sheet, 'B53', str(filepath)]
                     if filepath.is_file():
                         rst = excel.run(sheet, cmd, paras)
                         wlogger(vba_err, rst) if rst != 'vba_ok' else None
@@ -1604,7 +1621,7 @@ class Report(Base):
                     data.append(lst)
 
                 if data != []:
-                    paras = [filename, sheet, 'B47', data]
+                    paras = [filename, sheet, 'B46', data]
                     wlogger("Table {0}: Updating", '1.4', 70)
                     rst = excel.run(sheet, cmd, paras)
                     wlogger(vba_err, rst) if rst != 'vba_ok' else None
@@ -1620,7 +1637,7 @@ class Report(Base):
                 init_data = self.csv.init_data
                 if len(init_data) > 1:
                     init_data = init_data[1:]
-                    paras = [filename, sheet, 'B40', init_data]
+                    paras = [filename, sheet, 'B38', init_data]
                     wlogger("Table {0}: Updating", '1.3', 75)
                     rst = excel.run(sheet, cmd, paras)
                     wlogger(vba_err, rst) if rst != 'vba_ok' else None
@@ -1631,25 +1648,27 @@ class Report(Base):
                 wlogger("Exception {0}", str(e))
 
             # Update table 1.2
-            cmd = 'Fill_Table_1_2'
-            try:
-                wlogger("Table {0}: Updating", '1.2', 80)
+            if update_spec == False:
+                cmd = 'Fill_Table_1_2'
+                try:
+                    wlogger("Table {0}: Updating", '1.2', 80)
 
-                label_list = FileIE(self.files.get('ie')).lst_label
-                data_spec = self.get_spec_data(label_list)
+                    label_list = FileIE(self.files.get('ie')).lst_label
+                    data_spec = self.get_spec_data(label_list)
 
-                for i in range(len(label_list)):
-                    label = label_list[i]
-                    data_point = data_spec.get(label, [])
-                    if data_point != []:
-                        paras = [filename, sheet, 'B17', i+1, data_point]
-                        rst = excel.run(sheet, cmd, paras)
-                        wlogger(vba_err, rst) if rst != 'vba_ok' else None
+                    for i in range(len(label_list)):
+                        label = label_list[i]
+                        data_point = data_spec.get(label, [])
+                        if data_point != []:
+                            paras = [filename, sheet, 'B17', i+1, data_point]
+                            rst = excel.run(sheet, cmd, paras)
+                            wlogger(vba_err, rst) if rst != 'vba_ok' else None
 
-            except Exception as e:
-                logger.exception(e)
-                wlogger("Exception {0}", str(e))
-
+                except Exception as e:
+                    logger.exception(e)
+                    wlogger("Exception {0}", str(e))
+            else:
+                wlogger("Table {0}: Non-Update", '1.2', 80)
             # Update table 1.1
             cmd = 'Fill_cell'
             try:
@@ -1664,7 +1683,7 @@ class Report(Base):
             except Exception as e:
                 logger.exception(e)
                 wlogger("Exception {0}", str(e))
-
+           
             # Update format
             cmd = 'Fill_fault_conditional_format_n_reset_pointer'
             try:
@@ -1690,8 +1709,9 @@ class Report(Base):
             lst_item = iotbl.get_var_ai(index)
             lst_tc = []
             for item in set(lst_item):
-                if label in data_ai.get(item).get('id'):
-                    lst_tc += data_tc.get(item)
+                if label in data_ai.get(item).get('id'):       
+                    if data_tc.get(item) != None :
+                        lst_tc += data_tc.get(item) 
             return lst_tc
 
         def get_var_str(var, default=None):
@@ -1720,16 +1740,37 @@ class Report(Base):
 
             # Get all label spec info
             data_label = {}
+            comment_p3_temp = ''
+            tc_p3_temp = []
+
             for item, info in data_ai.items():
                 idstr = info.get('id').replace(';', ',')
                 lst = [l.strip() for l in idstr.split(',')
                        if l.strip() != '']
                 for label in lst:
-                    tmp = [info['comment'], utils.collapse_list(
-                        data_tc.get(item, []))]
-                    tmp2 = data_label.get(label, [])
-                    tmp2.append(tmp)
-                    data_label.update({label: tmp2})
+                    if label == label_list[2]: # Phi Update point 3 27/11/19
+                        if item.find('#') == -1: # no sub
+                            comment_p3_temp = info['comment']
+                            tc_p3_temp =  data_tc.get(item, [])
+                            tmp = [comment_p3_temp, utils.collapse_list(tc_p3_temp)]
+                            tmp2 = data_label.get(label, [])
+                            tmp2.append(tmp)
+                            data_label.update({label: tmp2})
+                           
+                        else:
+                            tmp2 = data_label.get(label, [])
+                            del tmp2[len(tmp2)-1]
+                            tc_p3_temp += data_tc.get(item, [])
+                            tmp = [comment_p3_temp, utils.collapse_list(tc_p3_temp)]
+                            tmp2.append(tmp)
+                            data_label.update({label: tmp2})           
+                           
+                    else:
+                        tmp = [info['comment'], utils.collapse_list(
+                            data_tc.get(item, []))]
+                        tmp2 = data_label.get(label, [])
+                        tmp2.append(tmp)
+                        data_label.update({label: tmp2})
 
             for key, value in data_label.items():
                 lst = [c for c in value if c[1] != '']
@@ -1742,7 +1783,7 @@ class Report(Base):
             for var in data_var.get('input'):
                 if var[2] == 'Number of elements':
                     continue
-                label = point_1 if '@AMIN' not in var[1] else point_2
+                label = point_1 if '@AM' not in var[1] else point_2
                 tmp = [int(i) for i in get_var_tc_data(var[3], label)]
                 var.append(tmp)
 
@@ -1750,8 +1791,8 @@ class Report(Base):
 
             data_var_spec = [get_var_str(var) for var in lst_input]
             data.update({
-                point_1: [var for var in data_var_spec if '@AMIN' not in var[0]],
-                point_2: [var for var in data_var_spec if '@AMIN' in var[0]]
+                point_1: [var for var in data_var_spec if '@AM' not in var[0]],
+                point_2: [var for var in data_var_spec if '@AM' in var[0]]
             })
 
             # Get amount (point 10)
@@ -1785,15 +1826,18 @@ class Report(Base):
         }
 
         result = utils.load(CONST.SETTING, 'jpDict.result')
-        num_issue = int(options.get('issue', '0'))
-        if num_issue > 0:
-            confirm = 'NG'
-            lst = ['{0}.{1}'.format(options.get('func_no', 0), i+1)
-                   for i in range(num_issue)]
-            issue = ', '.join(lst)
-            xlsxissuestr = utils.load(CONST.SETTING, 'jpDict.issue')
-            issue = '{0}_{1}No{2}'\
-                .format(summary.get('package'), xlsxissuestr, issue)
+        #num_issue = int(options.get('issue', '0'))
+        result_NG_OK = str(summary.get('result'))
+        #if num_issue > 0:
+        if result_NG_OK != "":
+            confirm = result_NG_OK #'NG'
+            issue = str(summary.get('issue'))
+            # lst = ['{0}.{1}'.format(options.get('func_no', 0), i+1)
+            #        for i in range(num_issue)]
+            # issue = ', '.join(lst)
+            # xlsxissuestr = utils.load(CONST.SETTING, 'jpDict.issue')
+            # issue = '{0}_{1}No{2}'\
+            #     .format(summary.get('package'), xlsxissuestr, issue)
         else:
             confirm = 'OK'
             issue = utils.load(CONST.SETTING, 'jpDict.noissue')

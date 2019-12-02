@@ -372,7 +372,24 @@ def deliver_report(info):
         report.deliver_files(target)
 
         # Deliver test spec
-        report.generate_spec(info)
+        report.generate_spec(info,update_spec = False)
+    except Exception as e:
+        logger.exception(e)
+
+@eel.expose
+def deliver_report_update(info):
+    '''Deliver report'''
+    logger.debug("Deliver report")
+    try:
+        testlog = info.get('testlog')
+        report = Report(testlog)
+
+        # Deliver test result file
+        target = info.get('target')
+        report.deliver_files(target)
+
+        # Deliver test spec
+        report.generate_spec(info,update_spec = True)
     except Exception as e:
         logger.exception(e)
 
@@ -442,7 +459,6 @@ def get_messages():
             # Get version
             version = utils.load(CONST.VERSION, 'version')
             
-
             filename = 'messages.json'
             url = utils.get_http_link(filename)
             filepath = CONST.DATA.joinpath(filename)
@@ -459,13 +475,13 @@ def get_messages():
 
             # Get messages
             for title, body in info.items():
-                if title == 'version' or title == 'link':
+                if title == 'version' or title == 'link' or title == 'descrip':
                     continue
 
                 try:
-                    url, content, tilldate, test_phi = tuple(body)
+                    content, tilldate = tuple(body)
                     if utils.is_expired(tilldate) is False:
-                        html += msg.format(URL = "",title=title, content = content,content1 = "")
+                        html += msg.format(URL = "",title=title, content = content, content1 = "")
                 except Exception as e:
                     logger.exception(e)
 

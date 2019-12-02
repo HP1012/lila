@@ -9,7 +9,6 @@ from lila import utils, web
 
 logger = logging.getLogger(__name__)
 
-
 def start_eel(mode='chrome-app'):
     '''Start Eel'''
     def on_close(page, sockets):
