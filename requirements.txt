@@ -4,7 +4,7 @@ bottle-websocket==0.2.9
 certifi==2019.9.11
 cffi==1.13.1
 chardet==3.0.4
-cryptography==2.8
+cryptography==3.2
 defusedxml==0.6.0
 Eel==0.10.4
 et-xmlfile==1.0.1
